@@ -1,92 +1,62 @@
-let quotes = [
-  `I live my life a quarter mile at a time`,
-  `I said a ten-second car, not a ten-minute car`,
-  `You can have any brew you want... as long as it's a Corona.`,
-  `You almost had me? You never had me - you never had your car!`,
-  `I don't have friends. I have family.`,
-  `It don't matter if you win by an inch or a mile. Winning's winning.`
-];
-
 document.addEventListener("DOMContentLoaded", function(event) {
-  // Random quote of the day generator
-  const randomQuote = function() {
-    document.querySelector('#quote-of-the-day').textContent = `"${quotes[Math.floor(Math.random() * quotes.length)]}"`;
-  };
-  randomQuote();
-  
-  // Do all of your work inside the document.addEventListener  
-
   // Part 1
-
-  let title = document.getElementById('main-title');
-  title.textContent = 'Dom webpage';
-
-
+  let mainTitle = document.getElementById("main-title");
+  mainTitle.textContent = "DOM's Website";
   // Part 2
-  const body = document.querySelector('body');
-  body.style.backgroundColor = 'pink';
-
+  let body = document.querySelector("body");
+  body.style.backgroundColor = "hotpink";
   // Part 3
-  let ulTag= document.querySelector('#favorite-things');
-    ulTag.lastElementChild.remove();
-
+  let favoriteThingsList = document.getElementById("favorite-things");
+  favoriteThingsList.lastElementChild.remove();
   // Part 4
-  let specialTitles = document.querySelectorAll('.special-title');
-
-    specialTitles.forEach(title => {
-    title.style.fontSize = '2rem';
+  let specialTitles = document.querySelectorAll(".special-title");
+  specialTitles.forEach(title => {
+    title.style.fontSize = "2rem";
   });
-
-// Part 5
-  let pastRaces = document.querySelector('#past-races');
-  let chiTown = pastRaces.querySelector("li:nth-child(4)");
-  chiTown.remove();
-
-// Part 6
-  let secondLi = document.createElement('li');
-  secondLi.textContent = 'Nairobi';
-  pastRaces.appendChild(secondLi);
-
-
+  // Part 5
+  let pastRacesList = document.getElementById("past-races");
+  let chicagoRace = pastRacesList.querySelector("li:nth-child(4)");
+  chicagoRace.remove();
+  // Part 6
+  let newRaceCity = "Nairobi";
+  let newRaceLi = document.createElement("li");
+  newRaceLi.textContent = newRaceCity;
+  pastRacesList.appendChild(newRaceLi);
   // Part 7
-  let firstDiv = document.createElement('div');
-  firstDiv.classList.add('blog-post');
-  
-  let h1tag = document.createElement('h1');
-  h1tag.textContent = 'Nairobi';
-  
-  let ptag = document.createElement('p');
-  ptag.textContent = 'I went to the wild and saw lions';
-  
-  firstDiv.appendChild(h1tag);
-  firstDiv.appendChild(ptag);
-  
+  let blogContainer = document.querySelector(".main");
+  let newBlogPost = document.createElement("div");
+  newBlogPost.classList.add("blog-post");
+  let newBlogPostTitle = document.createElement("h2");
+  newBlogPostTitle.textContent = newRaceCity;
+  let newBlogPostContent = document.createElement("p");
+  newBlogPostContent.textContent = "We had an exciting race in " + newRaceCity + "!";
+  newBlogPost.appendChild(newBlogPostTitle);
+  newBlogPost.appendChild(newBlogPostContent);
+  blogContainer.appendChild(newBlogPost);
   // Part 8
-  let quoteTitle = document.querySelector('#quote-titleID');
-  quoteTitle.addEventListener('click', function() {
-    randomQuote();
-  });
-  
-  
-
+  let quoteTitle = document.querySelector("#quote-title");
+  quoteTitle.addEventListener("click", randomQuote);
   // Part 9
-
- 
-
-  let blogPosts = document.querySelectorAll('.blog-post');
-
-  for (let i = 0; i < blogPosts.length; i++) {
-    let blogPost = blogPosts[i];
-  
-    blogPost.addEventListener('mouseout', function() {
-      blogPost.classList.toggle('purple');
+  let blogPosts = document.querySelectorAll(".blog-post");
+  blogPosts.forEach(blogPost => {
+    blogPost.addEventListener("mouseout", () => {
+      blogPost.classList.toggle("purple");
     });
-  
-    blogPost.addEventListener('mouseenter', function() {
-      blogPost.classList.toggle('red');
+    blogPost.addEventListener("mouseenter", () => {
+      blogPost.classList.toggle("red");
     });
-  }
-  
-
-
+  });
 });
+// Random quote of the day generator
+const quotes = [
+  "I live my life a quarter mile at a time",
+  "I said a ten-second car, not a ten-minute car",
+  "You can have any brew you want... as long as it's a Corona.",
+  "You almost had me? You never had me - you never had your car!",
+  "I don't have friends. I have family.",
+  "It don't matter if you win by an inch or a mile. Winning's winning."
+];
+const randomQuote = function() {
+  document.querySelector("#quote-of-the-day").textContent = `"${quotes[Math.floor(Math.random() * quotes.length)]}"`;
+};
+randomQuote();
